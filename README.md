@@ -5,18 +5,6 @@
 ### Professional Telegram Bot & Management Panel for Automated VPN Sales and Subscriptions
 
 <p>
-  <a href="https://github.com/sakurawork/truevpn/stargazers">
-    <img src="https://img.shields.io/github/stars/sakurawork/truevpn?style=flat-square&color=blue" alt="Stars"/>
-  </a>
-  <a href="https://github.com/sakurawork/truevpn/network/members">
-    <img src="https://img.shields.io/github/forks/sakurawork/truevpn?style=flat-square" alt="Forks"/>
-  </a>
-  <a href="https://github.com/sakurawork/truevpn/issues">
-    <img src="https://img.shields.io/github/issues/sakurawork/truevpn?style=flat-square" alt="Issues"/>
-  </a>
-  <a href="https://github.com/sakurawork/truevpn/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/sakurawork/truevpn?style=flat-square" alt="License"/>
-  </a>
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"/>
   <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/Aiogram-3.4+-2CA5E0?style=flat-square&logo=telegram&logoColor=white" alt="Aiogram 3"/>
