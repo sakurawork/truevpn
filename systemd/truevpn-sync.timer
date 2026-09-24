@@ -1,0 +1,10 @@
+[Unit]
+Description=Run TrueVPN Tunnel Sync Hourly
+After=network.target
+
+[Timer]
+OnCalendar=hourly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

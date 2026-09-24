@@ -1,0 +1,15 @@
+[Unit]
+Description=TrueVPN Telegram Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/truevpn
+ExecStart=/opt/truevpn/venv/bin/python3 bot.py
+Restart=always
+RestartSec=5
+EnvironmentFile=/opt/truevpn/.env
+
+[Install]
+WantedBy=multi-user.target

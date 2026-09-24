@@ -1,0 +1,10 @@
+[Unit]
+Description=TrueVPN Tunnel & Database Sync Worker
+After=network.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/opt/truevpn
+ExecStart=/opt/truevpn/scripts/sync_tunnels.sh
+EnvironmentFile=/opt/truevpn/.env

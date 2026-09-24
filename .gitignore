@@ -1,0 +1,12 @@
+.env
+*.db
+*.db.*
+*.log
+venv/
+__pycache__/
+*.pyc
+.system_generated/
+raw_vps/
+build_*.py
+.DS_Store
+subscription_cache.json
