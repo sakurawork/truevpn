@@ -20,7 +20,7 @@
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"/>
   <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/Aiogram-3.4+-2CA5E0?style=flat-square&logo=telegram&logoColor=white" alt="Aiogram 3"/>
-  <img src="https://img.shields.io/badge/Xray-Core-1.8+-black?style=flat-square" alt="Xray Core"/>
+  <img src="https://img.shields.io/badge/Xray_Core-v1.8+-black?style=flat-square" alt="Xray Core"/>
 </p>
 
 </div>
