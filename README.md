@@ -1,124 +1,56 @@
-<div align="center">
-
 # TrueVPN
 
-### Professional Telegram Bot & Management Panel for Automated VPN Sales and Subscriptions
+[![Python Version](https://img.shields.io/badge/Python-3.10+-3776AB?style=flat&logo=python&logoColor=white)](https://python.org)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat&logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com)
+[![Aiogram](https://img.shields.io/badge/Aiogram-3.4+-2CA5E0?style=flat&logo=telegram&logoColor=white)](https://aiogram.dev)
+[![Xray Core](https://img.shields.io/badge/Xray_Core-1.8+-0052CC?style=flat)](https://xtls.github.io)
 
-<p>
-  <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"/>
-  <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
-  <img src="https://img.shields.io/badge/Aiogram-3.4+-2CA5E0?style=flat-square&logo=telegram&logoColor=white" alt="Aiogram 3"/>
-  <img src="https://img.shields.io/badge/Xray_Core-1.8+-0052CC?style=flat-square" alt="Xray Core"/>
-</p>
-
-</div>
-
----
-
-## Table of Contents
-
-- [Overview](#overview)
-- [Key Features](#key-features)
-- [Payment Gateways](#payment-gateways)
-- [Supported Protocols & Clients](#supported-protocols--clients)
-- [Installation & Deployment](#installation--deployment)
-  - [Prerequisites](#prerequisites)
-  - [Quick Setup](#quick-setup)
-  - [Configuration](#configuration)
-  - [Systemd Services](#systemd-services)
-- [Admin Commands](#admin-commands)
-- [Project Layout](#project-layout)
-- [License](#license)
-
----
-
-## Overview
-
-TrueVPN is a production-ready, automated Telegram VPN sales bot and subscription provisioning platform powered by Xray Core.
-
-It provides end-to-end automation for selling VPN services: client onboarding, automated payments, dynamic VLESS and Reality configuration generation, real-time node synchronization, user-friendly Telegram Mini App portal, referral revenue sharing, and administrative control.
+TrueVPN is a high-performance, automated Telegram bot and subscription sales management platform powered by Xray Core. It provides end-to-end automation for VPN services: client onboarding, automated payments, dynamic VLESS and Reality configuration generation, real-time node synchronization, Telegram Mini App client portal, and multi-tier referral revenue sharing.
 
 ---
 
 ## Key Features
 
-- **Automated Provisioning**: Generates individual, cryptographic client credentials upon payment or trial activation.
-- **Dynamic Node Synchronization**: Automatically pulls upstream server pools and compiles local routing rules, inbounds, and outbounds for Xray.
-- **Telegram Mini App**: Built-in responsive Web App client portal for checking validity, browsing nodes, and one-tap import into VPN apps.
-- **Multi-Gateway Billing**: Native support for CryptoBot (USDT/crypto) and Platega (SBP / Bank Cards) with automated instant webhook confirmations.
-- **Growth & Marketing**:
-  - Multi-tier referral system with 20% revenue rewards and mutual subscription bonus days.
-  - Automated free trial period (configurable duration).
-  - Promo code redemption engine.
-- **Customer Support Integration**: Direct bi-directional messaging between users and administrators inside the bot.
-- **Operational Reliability**: Background systemd services, automated SQLite backups, and cron sync timers.
+* **Automated Provisioning & Cryptographic Access**:
+  * Dynamic generation of deterministic VLESS user UUIDs and XTLS-Vision flow credentials upon payment or trial activation.
+  * Real-time subscription status validation and automatic revocation for expired profiles.
+* **Dynamic Multi-Node Synchronization**:
+  * Real-time sync engine pulling upstream server pools and compiling local inbounds, outbounds, and routing rules for Xray Core.
+  * Native support for VLESS + Reality (TCP) and VLESS + WebSocket fallback tunnels.
+* **Telegram Mini App Web Portal**:
+  * Built-in mobile-responsive Web App for viewing subscription validity, copying keys, and one-tap import into client applications.
+* **Multi-Gateway Billing**:
+  * CryptoBot integration supporting USDT, TON, BTC, and altcoins with HMAC-verified webhook confirmations.
+  * Platega integration supporting SBP (Fast Payments System) and international bank cards.
+* **Viral Marketing & Growth**:
+  * 20% revenue-share referral system with mutual subscription bonus extensions.
+  * Instant automated trial periods and custom promo code redemption engine.
+* **Integrated Support Desk**:
+  * Bi-directional direct customer communication system between users and administrators inside the bot.
+* **Infrastructure Reliability**:
+  * Systemd service templates, automated SQLite backups, and cron sync timers.
 
 ---
 
-## Payment Gateways
+## Quickstart
 
-| Gateway | Supported Methods | Confirmation Mode |
-| :--- | :--- | :--- |
-| **CryptoBot** | USDT, TON, BTC, ETH, LTC, and more | Instant Webhook (HMAC verified) |
-| **Platega** | SBP (Fast Payments System), Russian & International Bank Cards | Instant Webhook (API Key verified) |
-
----
-
-## Supported Protocols & Clients
-
-TrueVPN generates universal Base64 subscription links compatible with all modern Xray-based client applications.
-
-### Protocols
-- VLESS + Reality (XTLS-Vision)
-- VLESS + WebSocket
-- VLESS + gRPC / XHTTP
-
-### Client Applications
-
-| Platform | Recommended Clients |
-| :--- | :--- |
-| **Android** | v2rayNG, Happ, NekoBox |
-| **iOS** | V2Box, Streisand, Happ, FoXray |
-| **Windows** | Hiddify Next, NekoBox, v2rayN |
-| **macOS** | Hiddify Next, V2Box, FoXray |
-| **Linux** | NekoBox, Xray CLI |
-
----
-
-## Installation & Deployment
-
-### Prerequisites
-
-- OS: Ubuntu 22.04 LTS or Debian 12
-- Python: 3.10 or higher
-- Xray Core installed (`/usr/local/bin/xray`)
-- Domain with SSL certificate (for webhook endpoints and Telegram Mini App)
-- Telegram Bot Token from [@BotFather](https://t.me/BotFather)
-
-### Quick Setup
-
-1. Clone the repository:
+### 1. Clone Repository & Install Dependencies
 ```bash
 git clone https://github.com/sakurawork/truevpn.git /opt/truevpn
 cd /opt/truevpn
-```
-
-2. Run the automated installer:
-```bash
 chmod +x scripts/setup.sh scripts/sync_tunnels.sh
 sudo bash scripts/setup.sh
 ```
 
-### Configuration
-
-Create `.env` from the example template and fill in your parameters:
+### 2. Configure Environment
+Create `.env` from the template and configure your credentials:
 ```bash
 cp .env.example .env
 nano .env
 ```
 
-Environment variables reference:
-
+Key configuration parameters:
 ```ini
 BOT_TOKEN=your_telegram_bot_token
 ADMIN_IDS=123456789,987654321
@@ -138,22 +70,14 @@ REALITY_PRIVATE_KEY=your_reality_private_key
 REALITY_PUBLIC_KEY=your_reality_public_key
 ```
 
-### Systemd Services
-
-The installation script configures three systemd units:
-
-- `truevpn-bot.service`: Runs the Telegram bot daemon.
-- `truevpn-server.service`: Runs the FastAPI subscription & webhook server.
-- `truevpn-sync.timer`: Triggers hourly tunnel synchronization and database backup.
-
-To control the services:
+### 3. Start System Services
 ```bash
-systemctl start truevpn-bot.service
-systemctl start truevpn-server.service
-systemctl start truevpn-sync.timer
+sudo systemctl start truevpn-bot.service
+sudo systemctl start truevpn-server.service
+sudo systemctl start truevpn-sync.timer
 ```
 
-To view real-time logs:
+Monitor live service logs:
 ```bash
 journalctl -u truevpn-bot.service -f
 journalctl -u truevpn-server.service -f
@@ -161,25 +85,47 @@ journalctl -u truevpn-server.service -f
 
 ---
 
-## Admin Commands
+## Payment Gateways
 
-| Command | Description |
-| :--- | :--- |
-| `/admin`, `/stats` | View active subscribers, total users, daily and monthly revenue metrics |
-| `/approve <user_id> <days>` | Manually issue or extend a subscription for a specified user |
+| Gateway | Supported Currencies & Methods | Verification Mode |
+|---|---|---|
+| **CryptoBot** | USDT, TON, BTC, ETH, LTC, TRX | Instant Webhook (HMAC SHA-256) |
+| **Platega** | SBP (Fast Payments System), Bank Cards | Instant Webhook (Secret API Key) |
+
+---
+
+## Supported Protocols & Client Apps
+
+TrueVPN generates universal Base64 subscription feeds and direct keys compatible with all modern Xray clients:
+
+| Platform | Recommended Applications | Supported Protocols |
+|---|---|---|
+| **Android** | v2rayNG, Happ, NekoBox | VLESS-Reality, VLESS-WS, gRPC |
+| **iOS** | V2Box, Streisand, Happ, FoXray | VLESS-Reality, VLESS-WS, gRPC |
+| **Windows** | Hiddify Next, NekoBox, v2rayN | VLESS-Reality, VLESS-WS, gRPC |
+| **macOS** | Hiddify Next, V2Box, FoXray | VLESS-Reality, VLESS-WS, gRPC |
+| **Linux** | NekoBox, Xray CLI | VLESS-Reality, VLESS-WS, gRPC |
+
+---
+
+## Administration
+
+| Command | Action |
+|---|---|
+| `/admin`, `/stats` | View active subscribers, total users, daily and monthly revenue analytics |
+| `/approve <user_id> <days>` | Manually issue or extend a subscription for a specific user ID |
 | `/broadcast <filter> <text>` | Send a targeted mass broadcast (`paid`, `trial`, or `all`) |
 
 ---
 
-## Project Layout
+## Project Structure
 
-```
-truevpn/
-├── bot.py                  # Telegram bot implementation (Aiogram 3)
+```text
+├── bot.py                  # Main Telegram bot daemon (Aiogram 3)
 ├── server.py               # FastAPI backend & subscription endpoint provider
 ├── tunnel.py               # Xray dynamic configuration & node synchronization engine
-├── database.py             # SQLite database layer & schema migrations
-├── config.py               # Environment configuration loader
+├── database.py             # SQLite data layer & automated migrations
+├── config.py               # Central environment configuration loader
 ├── static/
 │   └── index.html          # Telegram Mini App client web interface
 ├── systemd/
@@ -200,4 +146,4 @@ truevpn/
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+MIT License. See [LICENSE](LICENSE) for details.
