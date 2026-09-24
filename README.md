@@ -8,7 +8,7 @@
   <img src="https://img.shields.io/badge/Python-3.10+-3776AB?style=flat-square&logo=python&logoColor=white" alt="Python 3.10+"/>
   <img src="https://img.shields.io/badge/FastAPI-0.110+-009688?style=flat-square&logo=fastapi&logoColor=white" alt="FastAPI"/>
   <img src="https://img.shields.io/badge/Aiogram-3.4+-2CA5E0?style=flat-square&logo=telegram&logoColor=white" alt="Aiogram 3"/>
-  <img src="https://img.shields.io/badge/Xray_Core-v1.8+-black?style=flat-square" alt="Xray Core"/>
+  <img src="https://img.shields.io/badge/Xray_Core-1.8+-0052CC?style=flat-square" alt="Xray Core"/>
 </p>
 
 </div>
@@ -19,7 +19,6 @@
 
 - [Overview](#overview)
 - [Key Features](#key-features)
-- [Architecture](#architecture)
 - [Payment Gateways](#payment-gateways)
 - [Supported Protocols & Clients](#supported-protocols--clients)
 - [Installation & Deployment](#installation--deployment)
@@ -53,33 +52,6 @@ It provides end-to-end automation for selling VPN services: client onboarding, a
   - Promo code redemption engine.
 - **Customer Support Integration**: Direct bi-directional messaging between users and administrators inside the bot.
 - **Operational Reliability**: Background systemd services, automated SQLite backups, and cron sync timers.
-
----
-
-## Architecture
-
-```mermaid
-flowchart TD
-    User([Telegram User]) -->|Commands & WebApp| Bot[Telegram Bot (Aiogram 3)]
-    User -->|Subscription Link / WebApp| API[FastAPI Backend]
-    
-    subgraph Core
-        Bot --> DB[(SQLite Database)]
-        API --> DB
-        SyncWorker[Tunnel Sync Worker] --> DB
-        SyncWorker -->|Builds Config| Xray[Xray Core Service]
-        SyncWorker -->|Fetches Upstream Nodes| Upstream[Node Pool]
-    end
-    
-    subgraph Gateways
-        Bot --> CryptoPay[CryptoBot API]
-        Bot --> Platega[Platega Gateway]
-        CryptoPay -.->|Webhook| API
-        Platega -.->|Webhook| API
-    end
-    
-    Xray --> Internet((Encrypted Traffic))
-```
 
 ---
 
@@ -220,6 +192,7 @@ truevpn/
 │   └── sync_tunnels.sh     # Synchronization and backup script
 ├── .env.example            # Environment configuration template
 ├── requirements.txt        # Python package dependencies
+├── LICENSE                 # MIT License
 └── README.md               # Documentation
 ```
 
@@ -227,4 +200,4 @@ truevpn/
 
 ## License
 
-This project is licensed under the MIT License.
+This project is licensed under the [MIT License](LICENSE).
